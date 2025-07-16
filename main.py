@@ -43,17 +43,66 @@ class Predictionresponse(BaseModel):
 
 @app.get("/", response_class=HTMLResponse)
 async def root():
-    return"""""
-         <html>
-        <head>
-            <title>House Price Prediction API</title>
-        </head>
-        <body>
-            <h1>Welcome to the House Price Prediction API</h1>
-            <p>Use <a href='/docs'>/docs</a> to test the API.</p>
-        </body>
+    return """
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>House Price Prediction API</title>
+        <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background: linear-gradient(to right, #4facfe, #00f2fe);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                color: #fff;
+                text-align: center;
+            }
+            .container {
+                background-color: rgba(0, 0, 0, 0.5);
+                padding: 40px;
+                border-radius: 15px;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            }
+            h1 {
+                font-size: 2.5rem;
+                margin-bottom: 10px;
+            }
+            p {
+                font-size: 1.2rem;
+                margin-bottom: 30px;
+            }
+            a {
+                display: inline-block;
+                padding: 12px 24px;
+                background-color: #ffffff;
+                color: #0077ff;
+                font-weight: bold;
+                text-decoration: none;
+                border-radius: 8px;
+                transition: all 0.3s ease;
+            }
+            a:hover {
+                background-color: #00f2fe;
+                color: #fff;
+                border: 2px solid #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>🏡 House Price Prediction API</h1>
+            <p>Welcome to the ML-powered house price prediction service.</p>
+            <a href="/docs">Explore API in Swagger UI 🚀</a>
+        </div>
+    </body>
     </html>
     """
+
 
 @app.post("/predict", response_model=Predictionresponse)
 async def predict_house_price(feature : Housefeatures):
